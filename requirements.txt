@@ -1,0 +1,8 @@
+python-binance
+alpaca-trade-api
+yfinance
+py3cw==0.0.31
+ib_insync
+python-telegram-bot
+pandas
+numpy

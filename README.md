@@ -1,0 +1,22 @@
+## VARS
+
+#### Local cache dir
+
+```
+TRADERBASE_LOCAL_CACHE_DIR
+```
+
+#### Data source config (alpaca, binance, interactive brokers, telegram bot and three commas)
+
+```
+APCA_API_KEY_ID
+APCA_API_SECRET_KEY
+BINANCE_API_KEY
+BINANCE_API_SECRET
+INTERACTIVEBROKERS_HOST
+INTERACTIVEBROKERS_PORT
+TELEGRAM_TOKEN
+TELEGRAM_CHATID
+THREE_COMMAS_API_KEY
+THREE_COMMAS_API_SECRET
+```

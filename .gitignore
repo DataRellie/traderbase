@@ -1,0 +1,10 @@
+/.cache/*
+/.idea
+*.pyc
+/.tox
+/venv
+/nohup.out
+/cscope.out
+
+__pycache__
+/cache/*
