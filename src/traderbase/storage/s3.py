@@ -82,5 +82,11 @@ class S3Storage(BaseStorage):
         s3_client = boto3.client('s3')
         s3_client.upload_file(temp_path, self.bucket_name, file_path)
 
+    def cp(self, local_path: str, destination: str):
+
+        file_path = self.prefix + '/' + destination
+        s3_client = boto3.client('s3')
+        s3_client.upload_file(local_path, self.bucket_name, file_path)
+
     def _new_temp_file(self) -> str:
         return tempfile.mkdtemp(prefix='traderbase-') + '/' + str(random.randint(10000, 99999))

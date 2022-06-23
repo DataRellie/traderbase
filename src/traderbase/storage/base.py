@@ -45,3 +45,7 @@ class BaseStorage(metaclass=abc.ABCMeta):
         :return:
         """
         pass
+
+    @abc.abstractmethod
+    def cp(self, local_path: str, destination: str):
+        pass

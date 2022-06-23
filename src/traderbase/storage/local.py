@@ -1,5 +1,6 @@
 import json
 import os
+import shutil
 
 import pandas as pd
 
@@ -41,6 +42,10 @@ class LocalStorage(BaseStorage):
         """
         with open(self._abs_path(rel_file_path), 'w') as f:
             json.dump(obj, f)
+
+    def cp(self, local_path: str, destination: str):
+        # Easy for local.
+        shutil.copy(local_path, self._abs_path(destination))
 
     def _abs_path(self, rel_file_path: str) -> str:
         return os.path.join(self.file_path_base, rel_file_path)

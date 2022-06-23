@@ -6,7 +6,7 @@ with open(os.path.join(os.path.dirname(__file__), 'requirements.txt')) as f:
     required = f.read().splitlines()
 
 setup(name='traderbase',
-      version='0.0.18',
+      version='0.0.19',
       description='daytrader base trader lib',
       author='day-trader',
       author_email='david.monllao@gmail.com',
