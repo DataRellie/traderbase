@@ -1,4 +1,5 @@
 import time
+from datetime import datetime, timedelta
 
 import yfinance as yf
 import pandas as pd
@@ -26,7 +27,14 @@ class YFinance(DataSource):
         orig_end_str = f'{self.p["end_year"]}-{self.p["end_month"]}-{self.p["end_day"]}'
 
         if 'end_hour' in self.p and 'end_minute' in self.p:
-            orig_end_str = orig_end_str + f' {self.p["end_hour"]}:{self.p["end_minute"]}'
+            if self.p['historical'] is True:
+                raise Exception('Investigate in which case this is working fine. It seems that hours and minutes are not supported in yfinance')
+                orig_end_str = orig_end_str + f' {self.p["end_hour"]}:{self.p["end_minute"]}'
+            else:
+                # We just add +1 day as passing in hours and minutes does not seem to work. YFinance will just return the last bar available.
+                end_dt = datetime.strptime(orig_end_str, '%Y-%m-%d')
+                end_dt = end_dt + timedelta(days=1)
+                orig_end_str = end_dt.strftime('%Y-%m-%d')
 
         if self.p['min_bar_interval'] == '1m':
             raise Exception('Fetching of klines should be adapted as 1 * 60* 24 is more than the 1000 records limit')
