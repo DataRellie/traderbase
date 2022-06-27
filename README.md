@@ -4,6 +4,10 @@
 
 ```
 TRADERBASE_LOCAL_CACHE_DIR
+TRADERBASE_STORAGE_BACKEND i.e. 'local' or 's3'
+TRADERBASE_STORAGE_LOCAL_DIR (only if local)
+TRADERBASE_STORAGE_S3_BUCKET (only if s3)
+TRADERBASE_STORAGE_S3_PREFIX (only if s3)
 ```
 
 #### Data source config (alpaca, binance, interactive brokers, telegram bot and three commas)
