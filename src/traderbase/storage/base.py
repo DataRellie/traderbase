@@ -47,5 +47,9 @@ class BaseStorage(metaclass=abc.ABCMeta):
         pass
 
     @abc.abstractmethod
-    def cp(self, local_path: str, destination: str):
+    def cp_to_storage(self, local_path: str, destination: str):
+        pass
+
+    @abc.abstractmethod
+    def cp_to_local(self, path: str, local_path: str):
         pass
