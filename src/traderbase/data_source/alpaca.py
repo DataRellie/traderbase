@@ -2,7 +2,7 @@ import os
 from enum import Enum
 
 import pandas as pd
-from alpaca_trade_api.rest import REST, TimeFrame
+from alpaca_trade_api.rest import REST, TimeFrame, TimeFrameUnit
 
 import traderbase.constants as c
 from traderbase.data_source.base import DataSource
@@ -13,13 +13,6 @@ class AlpacaApi(object):
 
     def get(self):
         return REST()
-
-
-class AlpacaExtraTimeFrame(Enum):
-    FiveMinutes = '5Min'
-    FifteenMinutes = '15Min'
-    ThirtyMinutes = '30Min'
-    FourHours = '4Hour'
 
 
 class Alpaca(DataSource):
@@ -77,15 +70,15 @@ class Alpaca(DataSource):
 
     def _time_interval(self):
         if self.p['min_bar_interval'] == '5m':
-            return AlpacaExtraTimeFrame.FiveMinutes
+            return TimeFrame(5, TimeFrameUnit.Minute)
         elif self.p['min_bar_interval'] == '15m':
-            return AlpacaExtraTimeFrame.FifteenMinutes
+            return TimeFrame(15, TimeFrameUnit.Minute)
         elif self.p['min_bar_interval'] == '30m':
-            return AlpacaExtraTimeFrame.ThirtyMinutes
+            return TimeFrame(30, TimeFrameUnit.Minute)
         elif self.p['min_bar_interval'] == '1h':
             return TimeFrame.Hour
         elif self.p['min_bar_interval'] == '4h':
-            return AlpacaExtraTimeFrame.Hour
+            return TimeFrame(4, TimeFrameUnit.Hour)
         elif self.p['min_bar_interval'] == '1d':
             return TimeFrame.Day
         else:
